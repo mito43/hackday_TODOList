@@ -31,7 +31,8 @@ class MainPageCompornent extends LitElement {
   constructor() {
     super();
     this.kebosu = 'otya';
-    this.todoList = JSON.parse(storage.getStorage('TodoList')).todoList || [{text: '何もないよ'}];
+    this.data = storage.getStorage('TodoList');
+    this.todoList = !!this.data ? JSON.parse(this.data).todoList : [{text: '何もないよ'}];
   }
 
   render() {
