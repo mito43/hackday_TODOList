@@ -5,10 +5,12 @@ class ButtonCompornent extends LitElement {
   render() {
     return html`
     <div class="Button">
-        追加する
+      <div class="Button__label">
+        ここに変数
+      </div>
     </div>
     `
   }
 };
-window.customElements.define('td-button', ButtonCompornent);
+window.customElements.define('c-button', ButtonCompornent);
 export default ButtonCompornent;
