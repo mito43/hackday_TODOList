@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit-element';
 import './index.scss';
 import '../../comopnents/header';
 import '../../comopnents/circle';
-import '../../comopnents/button'
+import '../../comopnents/button';
 
 // このファイルに作ったコンポーネントを入れていく
 
@@ -30,7 +30,7 @@ class MainPageCompornent extends LitElement {
 
   render() {
     return html`
-      <div class="container">
+      <div class="container" is-show>
         <div class="header">
           <td-header></td-header>
         </div>
@@ -38,20 +38,19 @@ class MainPageCompornent extends LitElement {
           <div class="circles">
             <td-circle></td-circle>
           </div>
-          <div class="button__bg" @click-button="${(event) => this.changeStyle(event).bind}">
-            <div class="button">
-              <td-button></td-button>
-            </div>
+          <div class="button" @click-button="${(event) => this.handleButtonClick(event).bind}">
+            <td-button
+              type="red"
+            ></td-button>
           </div>
         </div>
       </div>
     `
   }
 
-  changeStyle(e) {
+  handleButtonClick(e) {
     e.currentTarget.style = `
-      height: 100vh;
-      bottom: 0;
+      transform: translate(-50%, 0);
     `;
   }
 };

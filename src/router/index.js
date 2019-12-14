@@ -1,5 +1,6 @@
 import { Router as VaadinRouter } from '@vaadin/router';
-import MainPage from '../pages/main/index.js';
+import MainPage from '../pages/main';
+import EditPage from '../pages/edit';
 import TestPage from '../pages/test/index.js';
 
 class Router {
@@ -7,6 +8,7 @@ class Router {
     this.router = null;
     this.pages = [
       MainPage,
+      EditPage,
       TestPage
     ];
   }
