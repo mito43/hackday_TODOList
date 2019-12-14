@@ -1,0 +1,36 @@
+{
+  "name": "hackday_TODOList",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "npm run clear && run-p debug:js",
+    "clear": "rm -rf dist",
+    "dev": "webpack --mode=development",
+    "prod": "webpack --mode=production",
+    "debug:js": "webpack-dev-server --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomoyan819/hackday_TODOList.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomoyan819/hackday_TODOList/issues"
+  },
+  "homepage": "https://github.com/tomoyan819/hackday_TODOList#readme",
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "inline-lit-element-loader": "0.0.2",
+    "node-sass": "^4.13.0",
+    "npm-run-all": "^4.1.5",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.4.0",
+    "lit-element": "^2.2.1"
+  }
+}
