@@ -5,6 +5,15 @@ import '../../comopnents/button/index.js';
 // このファイルに作ったコンポーネントを入れていく
 
 class MainPageCompornent extends LitElement {
+
+  static get is() {
+    return 'td-page-main';
+  }
+
+  static get path() {
+    return '/';
+  }
+
   render() {
     return html`
     <div class="container">
@@ -14,5 +23,6 @@ class MainPageCompornent extends LitElement {
     `
   }
 };
-window.customElements.define('td-page-main', MainPageCompornent);
+
+window.customElements.define(MainPageCompornent.is, MainPageCompornent);
 export default MainPageCompornent;
