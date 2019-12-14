@@ -1,7 +1,20 @@
-.TODO {
-  color: red;
+@import "../../index.scss";
 
-  &__start {
-    color: blue;
+.container {
+  background-color: #FF6369;
+}
+
+.body {
+  height: 100%;
+  padding: 15vh 20rem;
+}
+
+.input {
+  border-bottom: 1px solid rgb(255, 86, 91);
+  input {
+    background: none;
+    color: white;
+    margin-bottom: 1rem;
+    border: none;
   }
 }
