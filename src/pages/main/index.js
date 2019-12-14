@@ -14,7 +14,7 @@ class MainPageCompornent extends LitElement {
   static get path() {
     return '/';
   }
-  
+
   static get properties() {
     return {
       kebosu: {
@@ -47,7 +47,7 @@ class MainPageCompornent extends LitElement {
       </div>
     `
   }
-  
+
   changeStyle(e) {
     e.currentTarget.style = `
       height: 100vh;
