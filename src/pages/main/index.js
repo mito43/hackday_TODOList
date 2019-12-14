@@ -30,7 +30,7 @@ class MainPageCompornent extends LitElement {
 
   render() {
     return html`
-      <div class="container">
+      <div class="container" is-show>
         <div class="header">
           <td-header></td-header>
         </div>
@@ -38,16 +38,17 @@ class MainPageCompornent extends LitElement {
           <div class="circles">
             <td-circle></td-circle>
           </div>
-          <div class="button"  @click-button="${(event) => this.changeStyle(event).bind}">
-            <td-button></td-button>
+          <div class="button" @click-button="${(event) => this.handleButtonClick(event).bind}">
+            <td-button
+              type="red"
+            ></td-button>
           </div>
-          <a href="/edit">エディットへ</a>
         </div>
       </div>
     `
   }
 
-  changeStyle(e) {
+  handleButtonClick(e) {
     e.currentTarget.style = `
       transform: translate(-50%, 0);
     `;
