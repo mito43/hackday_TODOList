@@ -5,9 +5,10 @@ import '../../comopnents/button'
 
 // このファイルに作ったコンポーネントを入れていく
 
-class TodoAppCompornent extends LitElement {
+class MainPageCompornent extends LitElement {
   render() {
     return html`
+<<<<<<< HEAD
       <div class="container">
         <div class="header">
           <td-header></td-header>
@@ -16,8 +17,14 @@ class TodoAppCompornent extends LitElement {
           <td-button></td-button>
         </div>
       </div>
+=======
+    <div class="container">
+      メインのページ
+    </div>
+    <c-button></c-button>
+>>>>>>> master
     `
   }
 };
-window.customElements.define('todo-app', TodoAppCompornent);
-export default TodoAppCompornent;
+window.customElements.define('td-page-main', MainPageCompornent);
+export default MainPageCompornent;
