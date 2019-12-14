@@ -1,0 +1,18 @@
+@import "../../index.scss";
+
+.modal {
+  width: 80vw;
+  height: 30vh;
+  background-color: #FF6369;
+  box-shadow:1px 5px 11px -4px rgba(0,0,0,0.28);
+
+  &__link {
+    display: block;
+  }
+
+  &__img {
+    width: 100%;
+    transform: translateY(-10px);
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.3));
+  }
+}
