@@ -7,7 +7,7 @@ class ButtonCompornent extends LitElement {
     <div class="header">
       <div class="search">
         <div class="search__textinput">
-          <input type="text" placeholder="$1">
+          <input type="text" placeholder="買い物リスト">
         </div>
         <img class="search__button" src="https://yahoo.jp/box/Ujmq6N">
       </div>
