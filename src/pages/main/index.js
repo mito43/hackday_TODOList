@@ -36,7 +36,7 @@ class MainPageCompornent extends LitElement {
     this.isAnime = false;
     this.setIsShow(getRandomInt(3));
     this.data = storage.getStorage('TodoList');
-    this.todoList = !!this.data ? JSON.parse(this.data).todoList : [{text: '何もないよ'}];
+    this.todoList = !!this.data ? JSON.parse(this.data) : [{text: 'サンプルタスク'}];
   }
 
   updated() {
@@ -57,7 +57,7 @@ class MainPageCompornent extends LitElement {
               todoList,
               item => html`
               <div class="circles__item">
-                <td-circle>${item.text}</td-circle>
+                <td-circle text="${item.text}"></td-circle>
               </div>
             `)}
           </div>
@@ -74,7 +74,7 @@ class MainPageCompornent extends LitElement {
       })}" ?isshow="${!isUnshow}" ?isanime="${isAnime}">
         <div class="adds__item">
           <div class="adds__closeButton" @click="${this.handleCloseButtonClick}">X</div>
-          <td-modal></td-modal>
+          <td-modal link="https://hackday.jp/" imgSrc="https://s.yimg.jp/images/hackday/2019/assets/images/main-cover-logo.png"></td-modal>
         </div>
       </div>
     `
@@ -98,12 +98,16 @@ class MainPageCompornent extends LitElement {
   }
 
   setIsShow(int) {
-    // setTimeout(() =>{
-    //   this.isUnshow = false;
-    // }, int * 1000);
-    // setTimeout(() =>{
-    //   this.isAnime = true;
-    // }, int * 1100);
+    setTimeout(() =>{
+      return window.Promise.resolve()
+        .then(() => {
+          return  this.isUnshow = false;
+        }).then(() => {
+          return this.isAnime = true;
+        }).catch(e => {
+          console.error(e);
+        });
+    }, int * 1000);
   }
 
   handleButtonClick(e) {
@@ -113,7 +117,18 @@ class MainPageCompornent extends LitElement {
   }
 
   handleCloseButtonClick() {
+    this.isAnime = false;
     this.isUnshow = true;
+    setTimeout(() => {
+      return window.Promise.resolve()
+        .then(() => {
+          return this.isUnshow = false;
+        }).then(() => {
+          return this.isAnime = true;
+        }).catch(e => {
+          console.error(e);
+        });
+    }, 3000);
   }
 };
 

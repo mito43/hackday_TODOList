@@ -8,7 +8,10 @@ class MainPageCompornent extends LitElement {
   }
 
   static get properties() {
-    return {};
+    return {
+      imgSrc: { type: String },
+      link: { type: String }
+    };
   }
 
   constructor() {
@@ -16,10 +19,11 @@ class MainPageCompornent extends LitElement {
   }
 
   render() {
+    const { imgSrc, link } = this;
     return html`
       <div class="modal">
-        <a class="modal__link" href="https://hackday.jp/">
-          <img class="modal__img" src="https://s.yimg.jp/images/hackday/2019/assets/images/main-cover-logo.png">
+        <a class="modal__link" href="${ link }">
+          <img class="modal__img" src="${imgSrc}">
         </a>
       </div>
     `

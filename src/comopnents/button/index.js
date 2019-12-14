@@ -41,8 +41,8 @@ class ButtonCompornent extends LitElement {
     }
 
     // 親のスタイルを調整するために親にイベントを伝える
-    let clickButton = new CustomEvent('click-button', { 
-      bubbles: true, 
+    let clickButton = new CustomEvent('click-button', {
+      bubbles: true,
       composed: true
     });
     this.dispatchEvent(clickButton);

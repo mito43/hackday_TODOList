@@ -18,7 +18,7 @@ class TodoAppCompornent extends LitElement {
       textareaValue: { type: String },
       isDOMContentLoaded: { type: Boolean },
       oldList: { type: Array },
-      todoObj: { type: Object },
+      currentList: { type: Array},
     }
   }
 
@@ -27,6 +27,7 @@ class TodoAppCompornent extends LitElement {
     this.isOnInputed = false;
     this.textareaValue = '朝ごはんを食べる';
     this.isDOMContentLoaded = true;
+    this.currentList = [];
 
     // domが読み込まれたらattributeを追加できるようにしたい
     // this.isDOMContentLoaded = false;
@@ -72,13 +73,14 @@ class TodoAppCompornent extends LitElement {
   }
 
   handleButtonClick(e) {
+    this.oldList = [];
     if (!!storage.getStorage('TodoList')) {
-      const obj = storage.getStorage('TodoList');
-      this.oldList = JSON.parse(obj).todoList;
+      this.oldList = JSON.parse(storage.getStorage('TodoList'));
     }
-    this.oldList.push({text: this.textareaValue});
-    this.todoObj = {todoList: this.oldList};
-    storage.setStorage('TodoList', JSON.stringify(this.todoObj));
+
+    this.currentList = [...this.oldList, {text: this.textareaValue}];
+    // this.oldList.push({text: this.textareaValue});
+    storage.setStorage('TodoList', JSON.stringify(this.currentList));
     e.currentTarget.style = `
       transform: translate(-50%, 0);
     `;
