@@ -13,7 +13,6 @@ class Router {
 
   init({ outlet }) {
     return window.Promise.resolve().then(() => {
-      debugger
       this.vaadinRouter = new VaadinRouter(outlet);
       const routes = [];
       this.pages.forEach(Page => {
