@@ -4,6 +4,7 @@ import router from '../router';
 class TodoAppCompornent extends LitElement {
 
   firstUpdated() {
+    debugger
     window.Promise.resolve()
       .then(() => router)
       .then(() =>
