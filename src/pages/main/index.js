@@ -1,11 +1,13 @@
 import { LitElement, html } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { getRandomInt } from '../../common/getRandomInt';
+import { repeat } from 'lit-html/directives/repeat';
 import './index.scss';
 import '../../comopnents/header';
 import '../../comopnents/circle';
 import '../../comopnents/button';
 import '../../comopnents/modal';
+import { storage } from '../../storage';
 
 // このファイルに作ったコンポーネントを入れていく
 
@@ -21,7 +23,10 @@ class MainPageCompornent extends LitElement {
   static get properties() {
     return {
       isUnshow: { type: Boolean },
-      isAnime: { type: Boolean }
+      isAnime: { type: Boolean },
+      todoList: {
+        type: Array
+      }
     };
   }
 
@@ -30,14 +35,17 @@ class MainPageCompornent extends LitElement {
     this.isUnshow = true;
     this.isAnime = false;
     this.setIsShow(getRandomInt(3));
+    this.data = storage.getStorage('TodoList');
+    this.todoList = !!this.data ? JSON.parse(this.data).todoList : [{text: '何もないよ'}];
   }
 
   updated() {
     this.moveCircles(5000);
   }
 
+
   render() {
-    const { isUnshow, isAnime } = this;
+    const { todoList, isUnshow, isAnime } = this;
     return html`
       <div class="container" is-show>
         <div class="header">
@@ -45,36 +53,13 @@ class MainPageCompornent extends LitElement {
         </div>
         <div class="body">
           <div class="circles">
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
-            <div class="circles__item">
-              <td-circle></td-circle>
-            </div>
+            ${repeat(
+              todoList,
+              item => html`
+              <div class="circles__item">
+                <td-circle>${item.text}</td-circle>
+              </div>
+            `)}
           </div>
           <div class="button" @click-button="${(event) => this.handleButtonClick(event)}">
             <td-button
