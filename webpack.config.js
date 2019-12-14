@@ -82,6 +82,7 @@ const devConfig = {
     watchContentBase: true,
     open: true,
     port: 8080,
+    historyApiFallback: true,
     host: 'localhost',
     hot: true,
     watchOptions: {
