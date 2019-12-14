@@ -13,3 +13,45 @@ body {
 .container[is-show] {
     opacity: 1;
 }
+
+.adds {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130vh;
+    margin-top: -130vh;
+    background-color: rgba(0, 0, 0, 0.336);
+    opacity: 0;
+    transition: all 5s ease-out;
+
+    &__item {
+        position: relative;
+    }
+
+    &__closeButton {
+        position: absolute;
+        display: block;
+        left: -1.5rem;
+        top: -1.5rem;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 2;
+        background-color: white;
+    }
+}
+
+.adds[isshow] {
+    display: flex;
+}
+
+.adds[isanime] {
+    margin-top: -125vh;
+    opacity: 1;
+}
+
+.adds.unshow {
+    display: none;
+}

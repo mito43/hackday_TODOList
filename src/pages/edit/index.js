@@ -47,7 +47,7 @@ class TodoAppCompornent extends LitElement {
             >${textareaValue}</textarea>
           </div>
         </div>
-        <div class="button"  @click-button="${(event) => this.handleButtonClick(event).bind}">
+        <div class="button" @click-button="${(event) => this.handleButtonClick(event)}">
           <td-button
            type="white"
           ></td-button>
