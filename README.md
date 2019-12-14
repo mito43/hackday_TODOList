@@ -1,7 +1,9 @@
 # hackday_TODOList
 
 ```
+まずはインストール
 $ npm install
+
 webpack-dev-serverを起動する
 $ npm run start
 
