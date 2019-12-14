@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit-element';
 import './index.scss';
 import '../../comopnents/button';
-import { debug } from 'webpack';
+import { storage } from '../../storage';
 
 class TodoAppCompornent extends LitElement {
   static get is() {
@@ -16,7 +16,9 @@ class TodoAppCompornent extends LitElement {
     return {
       isOnInputed: { type: Boolean },
       textareaValue: { type: String },
-      isDOMContentLoaded: { type: Boolean }
+      isDOMContentLoaded: { type: Boolean },
+      oldList: { type: Array },
+      todoObj: { type: Object },
     }
   }
 
@@ -70,6 +72,13 @@ class TodoAppCompornent extends LitElement {
   }
 
   handleButtonClick(e) {
+    if (!!storage.getStorage('TodoList')) {
+      const obj = storage.getStorage('TodoList');
+      this.oldList = JSON.parse(obj).todoList;
+    }
+    this.oldList.push({text: this.textareaValue});
+    this.todoObj = {todoList: this.oldList};
+    storage.setStorage('TodoList', JSON.stringify(this.todoObj));
     e.currentTarget.style = `
       transform: translate(-50%, 0);
     `;
