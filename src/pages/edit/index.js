@@ -1,7 +1,6 @@
 import { LitElement, html } from 'lit-element';
 import './index.scss';
 import '../../comopnents/button';
-import { debug } from 'webpack';
 
 class TodoAppCompornent extends LitElement {
   static get is() {
@@ -66,6 +65,7 @@ class TodoAppCompornent extends LitElement {
 
   // textareaに文字が入力されたら再レンダー
   handleOnInput(e) {
+    debugger
     this.textareaValue = e.currentTarget.value;
   }
 

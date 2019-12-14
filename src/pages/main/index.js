@@ -43,7 +43,7 @@ class MainPageCompornent extends LitElement {
           <div class="circles">
             <td-circle></td-circle>
           </div>
-          <div class="button" @click-button="${(event) => this.handleButtonClick(event).bind}">
+          <div class="button" @click-button="${(event) => this.handleButtonClick(event)}">
             <td-button
               type="red"
             ></td-button>
