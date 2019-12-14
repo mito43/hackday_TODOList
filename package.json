@@ -1,13 +1,14 @@
 {
-  "name": "hackday_TODOList",
+  "name": "todo-list-package",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "npm run clear && run-p debug:js",
+    "start": "npm run clear && run-p debug:build debug:serve",
     "clear": "rm -rf dist",
     "dev": "webpack --mode=development",
     "prod": "webpack --mode=production",
-    "debug:js": "webpack-dev-server --mode development"
+    "debug:build": "webpack --mode=development --watch",
+    "debug:serve": "webpack-dev-server --mode development"
   },
   "repository": {
     "type": "git",

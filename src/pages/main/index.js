@@ -47,7 +47,7 @@ class MainPageCompornent extends LitElement {
       </div>
     `
   }
-  
+
   changeStyle(e) {
     e.currentTarget.style = `
       height: 100vh;
