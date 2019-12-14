@@ -1,8 +1,10 @@
-import { LitElement, html } from 'lit-element';
+import { repeat } from 'lit-html/directives/repeat';
+import { LitElement, html, } from 'lit-element';
 import './index.scss';
 import '../../comopnents/header';
 import '../../comopnents/circle';
 import '../../comopnents/button';
+import { storage } from '../../storage';
 
 // このファイルに作ったコンポーネントを入れていく
 
@@ -19,6 +21,9 @@ class MainPageCompornent extends LitElement {
     return {
       kebosu: {
         type: String
+      },
+      todoList: {
+        type: Array
       }
     };
   }
@@ -26,9 +31,11 @@ class MainPageCompornent extends LitElement {
   constructor() {
     super();
     this.kebosu = 'otya';
+    this.todoList = JSON.parse(storage.getStorage('TodoList')).todoList || [{text: '何もないよ'}];
   }
 
   render() {
+    const { todoList } = this;
     return html`
       <div class="container" is-show>
         <div class="header">
@@ -36,6 +43,11 @@ class MainPageCompornent extends LitElement {
         </div>
         <div class="body">
           <div class="circles">
+            ${repeat(
+              todoList,
+              item => html`
+              <td-circle>${item.text}</td-circle>
+            `)}
             <td-circle></td-circle>
           </div>
           <div class="button" @click-button="${(event) => this.handleButtonClick(event).bind}">
