@@ -16,10 +16,6 @@ class TodoAppCompornent extends LitElement {
 
   render() {
     return html`
-      <div class="header">
-        <a href="/">メイン</a>
-        <a href="/test">テスト</a>
-      </div>
       <div class="outlet"></div>
     `
   }

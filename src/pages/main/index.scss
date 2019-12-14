@@ -1,4 +1,29 @@
+@import "../../index.scss";
+
 .container {
-  padding: 10px;
-  background-color: red;
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.button {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4rem;
+  width: 80vw;
+  margin: 0 auto;
+  transition: all 1s ease;
+
+  &__bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4rem;
+    height: 0;
+    width: 100%;
+    background-color: #FF6369;
+    transition: all 1s ease;
+  }
 }
