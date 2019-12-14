@@ -1,7 +1,8 @@
 import { LitElement, html } from 'lit-element';
 import './index.scss';
+import '../../comopnents/button/index.js';
 
-// このファイルに作った
+// このファイルに作ったコンポーネントを入れていく
 
 class TodoAppCompornent extends LitElement {
   render() {
@@ -12,6 +13,7 @@ class TodoAppCompornent extends LitElement {
         ここから始まる
       </div>
     </div>
+    <c-button></c-button>
     `
   }
 };
