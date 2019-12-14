@@ -7,6 +7,14 @@ import '../../comopnents/button'
 // このファイルに作ったコンポーネントを入れていく
 
 class MainPageCompornent extends LitElement {
+  static get is() {
+    return 'td-page-main';
+  }
+
+  static get path() {
+    return '/';
+  }
+  
   static get properties() {
     return {
       kebosu: {
@@ -47,5 +55,6 @@ class MainPageCompornent extends LitElement {
     `;
   }
 };
-window.customElements.define('td-page-main', MainPageCompornent);
+
+window.customElements.define(MainPageCompornent.is, MainPageCompornent);
 export default MainPageCompornent;
