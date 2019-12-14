@@ -29,7 +29,11 @@ class MainPageCompornent extends LitElement {
     super();
     this.isUnshow = true;
     this.isAnime = false;
-    this.setIsShow(getRandomInt(5));
+    this.setIsShow(getRandomInt(3));
+  }
+
+  updated() {
+    this.moveCircles(5000);
   }
 
   render() {
@@ -41,7 +45,36 @@ class MainPageCompornent extends LitElement {
         </div>
         <div class="body">
           <div class="circles">
-            <td-circle></td-circle>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
+            <div class="circles__item">
+              <td-circle></td-circle>
+            </div>
           </div>
           <div class="button" @click-button="${(event) => this.handleButtonClick(event)}">
             <td-button
@@ -62,13 +95,30 @@ class MainPageCompornent extends LitElement {
     `
   }
 
+  moveCircles(sec) {
+    const circles = this.shadowRoot.querySelector('.circles');
+    const circlesWidth = circles.clientWidth;
+    const circlesHeight = circles.clientHeight;
+    [...circles.children].forEach(circle => {
+      setInterval((() => {
+        const randomX = getRandomInt(circlesWidth-100);
+        const randomY = getRandomInt(circlesHeight-200);
+        circle.style = `
+          top: 0;
+          left: 0;
+          transform: translate3d(${randomX}px, ${randomY}px, 0);
+        `;
+      }), sec);
+    });
+  }
+
   setIsShow(int) {
-    setTimeout(() =>{
-      this.isUnshow = false;
-    }, int * 1000);
-    setTimeout(() =>{
-      this.isAnime = true;
-    }, int * 1100);
+    // setTimeout(() =>{
+    //   this.isUnshow = false;
+    // }, int * 1000);
+    // setTimeout(() =>{
+    //   this.isAnime = true;
+    // }, int * 1100);
   }
 
   handleButtonClick(e) {

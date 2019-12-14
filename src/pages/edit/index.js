@@ -65,7 +65,6 @@ class TodoAppCompornent extends LitElement {
 
   // textareaに文字が入力されたら再レンダー
   handleOnInput(e) {
-    debugger
     this.textareaValue = e.currentTarget.value;
   }
 
