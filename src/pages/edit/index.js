@@ -19,15 +19,19 @@ class TodoAppCompornent extends LitElement {
       isDOMContentLoaded: { type: Boolean },
       oldList: { type: Array },
       currentList: { type: Array},
+      hasQuery: { type: Boolean },
+      idx: { type: Number }
     }
   }
 
   constructor() {
     super();
+    this.idx = 0;
     this.isOnInputed = false;
     this.textareaValue = '朝ごはんを食べる';
     this.isDOMContentLoaded = true;
     this.currentList = [];
+    this.hasQuery = this.checkHasQuery();
 
     // domが読み込まれたらattributeを追加できるようにしたい
     // this.isDOMContentLoaded = false;
@@ -57,6 +61,16 @@ class TodoAppCompornent extends LitElement {
     `
   }
 
+  checkHasQuery() {
+    const query = window.location.search;
+    if(!query) {
+      return false;
+    }
+    this.idx = parseInt(query.substring(5));
+    this.textareaValue = JSON.parse(storage.getStorage('TodoList'))[this.idx].text;
+    return true;
+  }
+
   // 初めてフォーカスが当たったらtextareaを初期化
   handleOnFocus(e) {
     if(this.isOnInputed) {
@@ -78,7 +92,12 @@ class TodoAppCompornent extends LitElement {
       this.oldList = JSON.parse(storage.getStorage('TodoList'));
     }
 
-    this.currentList = [...this.oldList, {text: this.textareaValue}];
+    if(this.hasQuery) {
+      this.oldList[this.idx].text = this.textareaValue;
+      this.currentList = this.oldList;
+    } else {
+      this.currentList = [...this.oldList, {text: this.textareaValue}];
+    }
     // this.oldList.push({text: this.textareaValue});
     storage.setStorage('TodoList', JSON.stringify(this.currentList));
     e.currentTarget.style = `
