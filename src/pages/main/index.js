@@ -119,7 +119,7 @@ class MainPageCompornent extends LitElement {
   handleCircleClick(e) {
     const idx = e.currentTarget.getAttribute('todoindex');
     const text = e.currentTarget.getAttribute('text');
-    window.location.href = `/edit?idx=${idx},text=${text}`;
+    window.location.href = `/edit?idx=${idx}`;
   }
 
   handleCloseButtonClick() {
