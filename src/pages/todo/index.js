@@ -25,5 +25,5 @@ class TodoPageCompornent extends LitElement {
     `
   }
 };
-window.customElements.define(TestPageCompornent.is, TestPageCompornent);
-export default TestPageCompornent;
+window.customElements.define(TodoPageCompornent.is, TodoPageCompornent);
+export default TodoPageCompornent;
