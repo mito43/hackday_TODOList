@@ -8,19 +8,21 @@ class ButtonCompornent extends LitElement {
 
   static get properties() {
     return {
-      text: { type: String }
+      text: { type: String },
+      todoindex: { type: Number }
     }
   }
 
   constructor() {
     super();
     this.text = '';
+    this.todoindex = '';
   }
 
   render() {
     const { text } = this;
     return html`
-      <div class="circle">
+      <div class="circle" @click="${(event) => this.handleClick(event)}">
         <div class="circle__inner">
           ${text}
         </div>
@@ -28,40 +30,12 @@ class ButtonCompornent extends LitElement {
     `
   }
 
-  click(e) {
-    const { text } = this;
-    let link = '/edit';
-    let styleTag = `
-      width: 100vw;
-      height: 100vh;
-      border-radius: 0;
-      color: #FF6369;
-    `;
-
-    if(type == 'white') {
-      link = '/';
-      styleTag = `
-        width: 100vw;
-        height: 100vh;
-        border-radius: 0;
-        color: white;
-      `;
-    }
-
-    // 親のスタイルを調整するために親にイベントを伝える
-    let clickButton = new CustomEvent('click-button', {
+  handleClick(e) {
+    const clickCircle = new CustomEvent('click-circle', {
       bubbles: true,
       composed: true
     });
-    this.dispatchEvent(clickButton);
-
-    // buttonのスタイルを調整
-    e.currentTarget.style = styleTag;
-
-    // transitionが終わったらルーティング
-    e.currentTarget.addEventListener('transitionend', () => {
-      window.location.href = link;
-    });
+    this.dispatchEvent(clickCircle);
   }
 };
 window.customElements.define(ButtonCompornent.is, ButtonCompornent);
