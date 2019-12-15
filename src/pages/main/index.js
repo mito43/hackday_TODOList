@@ -55,9 +55,9 @@ class MainPageCompornent extends LitElement {
           <div class="circles">
             ${repeat(
               todoList,
-              item => html`
+              (item,idx) => html`
               <div class="circles__item">
-                <td-circle text="${item.text}"></td-circle>
+                <td-circle todoindex="${idx}" text="${item.text}" @click-circle="${(event) => this.handleCircleClick(event)}"></td-circle>
               </div>
             `)}
           </div>
@@ -114,6 +114,12 @@ class MainPageCompornent extends LitElement {
     e.currentTarget.style = `
       transform: translate(-50%, 0);
     `;
+  }
+
+  handleCircleClick(e) {
+    const idx = e.currentTarget.getAttribute('todoindex');
+    const text = e.currentTarget.getAttribute('text');
+    window.location.href = `/edit?idx=${idx},text=${text}`;
   }
 
   handleCloseButtonClick() {
